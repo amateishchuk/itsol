@@ -36,9 +36,12 @@ namespace ItSolutionExpert.Controllers
         {
             if (!ModelState.IsValid)
                 return View(item);
-            foreach (var selectedCategory in selectedCategories)
-                item.Categories.Add(await _dataContext.Categories.FindAsync(selectedCategory));
 
+            if (selectedCategories != null)
+            {
+                foreach (var selectedCategory in selectedCategories)
+                    item.Categories.Add(await _dataContext.Categories.FindAsync(selectedCategory));
+            }
             _dataContext.Items.Add(item);
             await _dataContext.SaveChangesAsync();
             return RedirectToAction("GetAll");

@@ -14,6 +14,7 @@ namespace ItSolutionExpert
         protected void Application_Start()
         {
             Database.SetInitializer(new ItemsDbInitializer());
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
